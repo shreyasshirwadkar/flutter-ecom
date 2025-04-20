@@ -16,7 +16,13 @@ class CustomTextfield
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: (val) {},
+      validator: (val) {
+        if (val == null ||
+            val.isEmpty) {
+          return 'Enter your $hintText';
+        }
+        return null;
+      },
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(

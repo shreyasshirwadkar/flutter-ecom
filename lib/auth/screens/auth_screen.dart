@@ -1,3 +1,4 @@
+import 'package:ecom/auth/services/auth_service.dart';
 import 'package:ecom/common/widgets/custom_button.dart';
 import 'package:ecom/common/widgets/custom_textfield.dart';
 import 'package:ecom/constants/global_variables.dart';
@@ -32,12 +33,25 @@ class _AuthScreenState
 
   bool _isSignIn = false;
 
+  final AuthService authService =
+      AuthService();
+
   @override
   void dispose() {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+  }
+
+  void signUpUser() {
+    authService.signUpUser(
+      context: context,
+      email: _emailController.text,
+      password:
+          _passwordController.text,
+      name: _nameController.text,
+    );
   }
 
   @override
@@ -142,12 +156,12 @@ class _AuthScreenState
                                 .currentState!
                                 .validate()) {
                               //handle sign in
-                            } else {
-                              if (_signUpFormKey
-                                  .currentState!
-                                  .validate()) {
-                                //handle sign up
-                              }
+                            }
+                          } else {
+                            if (_signUpFormKey
+                                .currentState!
+                                .validate()) {
+                              signUpUser();
                             }
                           }
                         },
