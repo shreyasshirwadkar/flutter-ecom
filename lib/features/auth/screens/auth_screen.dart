@@ -1,4 +1,4 @@
-import 'package:ecom/auth/services/auth_service.dart';
+import 'package:ecom/features/auth/services/auth_service.dart';
 import 'package:ecom/common/widgets/custom_button.dart';
 import 'package:ecom/common/widgets/custom_textfield.dart';
 import 'package:ecom/constants/global_variables.dart';
@@ -51,6 +51,15 @@ class _AuthScreenState
       password:
           _passwordController.text,
       name: _nameController.text,
+    );
+  }
+
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password:
+          _passwordController.text,
     );
   }
 
@@ -155,7 +164,7 @@ class _AuthScreenState
                             if (_signInFormKey
                                 .currentState!
                                 .validate()) {
-                              //handle sign in
+                              signInUser();
                             }
                           } else {
                             if (_signUpFormKey
