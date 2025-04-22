@@ -1,9 +1,11 @@
+import 'package:badges/badges.dart'
+    as badges;
+
 import '../../constants/global_variables.dart';
 // import '../../features/account/screens/account_screen.dart';
 // import '../../features/cart/screens/cart_screen.dart';
 import '../../features/home/screens/home_screen.dart';
 import '../../providers/user_provider.dart';
-// import '../../badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +28,12 @@ class _BottomBarState
 
   List<Widget> pages = [
     const HomeScreen(),
+    const Center(
+      child: Text("Account Page"),
+    ),
+    const Center(
+      child: Text("Cart Page"),
+    ),
     // const AccountScreen(),
     // const CartScreen(),
   ];
@@ -128,23 +136,31 @@ class _BottomBarState
                   ),
                 ),
               ),
-              child: const Icon(
-                Icons
-                    .person_outline_outlined,
+
+              child: badges.Badge(
+                position: badges
+                    .BadgePosition.topEnd(
+                  top: -12,
+                  end: -5,
+                ),
+
+                badgeContent:
+                    const Text('2'),
+                // badgeContent: Text(
+                //   userCartLen
+                //       .toString(),
+                // ),
+                badgeStyle:
+                    badges.BadgeStyle(
+                      badgeColor:
+                          Colors.white,
+                    ),
+
+                child: const Icon(
+                  Icons
+                      .shopping_cart_outlined,
+                ),
               ),
-              // child: Badge(
-              //   elevation: 0,
-              //   badgeContent: Text(
-              //     userCartLen
-              //         .toString(),
-              //   ),
-              //   badgeColor:
-              //       Colors.white,
-              //   child: const Icon(
-              //     Icons
-              //         .shopping_cart_outlined,
-              //   ),
-              // ),
             ),
             label: '',
           ),
