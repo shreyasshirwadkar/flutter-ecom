@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart'
     as badges;
+import 'package:ecom/features/account/screens/account_screen.dart';
 
 import '../../constants/global_variables.dart';
 // import '../../features/account/screens/account_screen.dart';
@@ -28,13 +29,11 @@ class _BottomBarState
 
   List<Widget> pages = [
     const HomeScreen(),
-    const Center(
-      child: Text("Account Page"),
-    ),
+    const AccountScreen(),
+
     const Center(
       child: Text("Cart Page"),
     ),
-    // const AccountScreen(),
     // const CartScreen(),
   ];
 
