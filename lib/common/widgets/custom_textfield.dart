@@ -6,11 +6,14 @@ class CustomTextfield
   controller;
   final String hintText;
   final bool obscureText;
+  final int maxLines;
+
   const CustomTextfield({
     super.key,
     required this.controller,
     required this.hintText,
-    required this.obscureText,
+    this.maxLines = 1,
+    this.obscureText = false,
   });
 
   @override
@@ -25,6 +28,7 @@ class CustomTextfield
       },
       controller: controller,
       obscureText: obscureText,
+      maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintText,
         enabledBorder:
@@ -45,7 +49,7 @@ class CustomTextfield
                         .shade400,
               ),
             ),
-        fillColor: Colors.grey.shade100,
+        fillColor: const Color.fromARGB(188, 245, 245, 245),
         filled: true,
       ),
     );

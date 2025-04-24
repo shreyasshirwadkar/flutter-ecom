@@ -1,4 +1,5 @@
 import 'package:ecom/common/widgets/bottom_bar.dart';
+import 'package:ecom/features/admin/screens/admin_screen.dart';
 import 'package:ecom/features/auth/screens/auth_screen.dart';
 import 'package:ecom/constants/global_variables.dart';
 import 'package:ecom/features/auth/services/auth_service.dart';
@@ -49,6 +50,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ecom',
       theme: ThemeData(
         colorScheme: ColorScheme.light(
@@ -73,7 +75,14 @@ class _MyAppState extends State<MyApp> {
           Provider.of<UserProvider>(
                 context,
               ).user.token.isNotEmpty
-              ? const BottomBar()
+              ? Provider.of<
+                        UserProvider
+                      >(
+                        context,
+                      ).user.type ==
+                      'user'
+                  ? const BottomBar()
+                  : const AdminScreen()
               : const AuthScreen(),
     );
   }
