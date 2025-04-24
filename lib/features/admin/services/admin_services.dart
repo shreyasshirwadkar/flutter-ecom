@@ -302,7 +302,8 @@ class AdminServices {
           context,
           listen: false,
         );
-    List<Sales> sales = [];
+    List sales = [];
+    // List<Sales> sales = [];
     int totalEarning = 0;
     try {
       http.Response
@@ -318,39 +319,39 @@ class AdminServices {
         },
       );
 
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {
-          var response = jsonDecode(
-            res.body,
-          );
-          totalEarning =
-              response['totalEarnings'];
-          sales = [
-            Sales(
-              'Mobiles',
-              response['mobileEarnings'],
-            ),
-            Sales(
-              'Essentials',
-              response['essentialEarnings'],
-            ),
-            Sales(
-              'Books',
-              response['booksEarnings'],
-            ),
-            Sales(
-              'Appliances',
-              response['applianceEarnings'],
-            ),
-            Sales(
-              'Fashion',
-              response['fashionEarnings'],
-            ),
-          ];
-        },
-      );
+      // httpErrorHandle(
+      //   response: res,
+      //   context: context,
+      //   onSuccess: () {
+      //     var response = jsonDecode(
+      //       res.body,
+      //     );
+      //     totalEarning =
+      //         response['totalEarnings'];
+      //     sales = [
+      //       Sales(
+      //         'Mobiles',
+      //         response['mobileEarnings'],
+      //       ),
+      //       Sales(
+      //         'Essentials',
+      //         response['essentialEarnings'],
+      //       ),
+      //       Sales(
+      //         'Books',
+      //         response['booksEarnings'],
+      //       ),
+      //       Sales(
+      //         'Appliances',
+      //         response['applianceEarnings'],
+      //       ),
+      //       Sales(
+      //         'Fashion',
+      //         response['fashionEarnings'],
+      //       ),
+      //     ];
+      //   },
+      // );
     } catch (e) {
       showSnackBar(
         context,

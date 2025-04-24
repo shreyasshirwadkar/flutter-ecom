@@ -18,22 +18,21 @@ class PostsScreen
 
 class _PostsScreenState
     extends State<PostsScreen> {
-  List? products;
-  // List<Product>? products;
-  // final AdminServices adminServices =
-  //     AdminServices();
+  List<Product>? products;
+  final AdminServices adminServices =
+      AdminServices();
 
   @override
   void initState() {
     super.initState();
-    // fetchAllProducts();
+    fetchAllProducts();
   }
 
-  // fetchAllProducts() async {
-  //   products = await adminServices
-  //       .fetchAllProducts(context);
-  //   setState(() {});
-  // }
+  fetchAllProducts() async {
+    products = await adminServices
+        .fetchAllProducts(context);
+    setState(() {});
+  }
 
   // void deleteProduct(
   //   Product product,
@@ -58,93 +57,77 @@ class _PostsScreenState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton:
-          FloatingActionButton(
-            backgroundColor:
-                Colors.cyan[300],
-            child: const Icon(
-              Icons.add,
-            ),
-            onPressed:
-                navigateToAddProduct,
-            tooltip: 'Add a Product',
+    return products == null
+        ? const Loader()
+        : Scaffold(
+          body: GridView.builder(
+            itemCount: products!.length,
+            gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+            itemBuilder: (
+              context,
+              index,
+            ) {
+              final productData =
+                  products![index];
+              return Column(
+                children: [
+                  SizedBox(
+                    height: 140,
+                    child: SingleProduct(
+                      image:
+                          productData
+                              .images[0],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment:
+                        MainAxisAlignment
+                            .spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          productData
+                              .name,
+                          overflow:
+                              TextOverflow
+                                  .ellipsis,
+                          maxLines: 2,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed:
+                            () => {},
+                        // () => deleteProduct(
+                        //   productData,
+                        //   index,
+                        // ),
+                        icon: const Icon(
+                          Icons
+                              .delete_outline,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
           ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation
-              .centerFloat,
-    );
-    // return products == null
-    //     ? const Loader()
-    //     : Scaffold(
-    //       body: GridView.builder(
-    //         itemCount: products!.length,
-    //         gridDelegate:
-    //             const SliverGridDelegateWithFixedCrossAxisCount(
-    //               crossAxisCount: 2,
-    //             ),
-    //         itemBuilder: (
-    //           context,
-    //           index,
-    //         ) {
-    //           final productData =
-    //               products![index];
-    //           return Column(
-    //             children: [
-    //               SizedBox(
-    //                 height: 140,
-    //                 child: SingleProduct(
-    //                   image:
-    //                       productData
-    //                           .images[0],
-    //                 ),
-    //               ),
-    //               Row(
-    //                 mainAxisAlignment:
-    //                     MainAxisAlignment
-    //                         .spaceEvenly,
-    //                 children: [
-    //                   Expanded(
-    //                     child: Text(
-    //                       productData
-    //                           .name,
-    //                       overflow:
-    //                           TextOverflow
-    //                               .ellipsis,
-    //                       maxLines: 2,
-    //                     ),
-    //                   ),
-    //                   IconButton(
-    //                     onPressed:
-    //                         () => {},
-    //                     // () => deleteProduct(
-    //                     //   productData,
-    //                     //   index,
-    //                     // ),
-    //                     icon: const Icon(
-    //                       Icons
-    //                           .delete_outline,
-    //                     ),
-    //                   ),
-    //                 ],
-    //               ),
-    //             ],
-    //           );
-    //         },
-    //       ),
-    //       floatingActionButton:
-    //           FloatingActionButton(
-    //             child: const Icon(
-    //               Icons.add,
-    //             ),
-    //             onPressed:
-    //                 navigateToAddProduct,
-    //             tooltip:
-    //                 'Add a Product',
-    //           ),
-    //       floatingActionButtonLocation:
-    //           FloatingActionButtonLocation
-    //               .centerFloat,
-    //     );
+          floatingActionButton:
+              FloatingActionButton(
+                child: const Icon(
+                  Icons.add,
+                ),
+                onPressed:
+                    navigateToAddProduct,
+                tooltip:
+                    'Add a Product',
+              ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation
+                  .centerFloat,
+        );
   }
 }
