@@ -11,11 +11,11 @@ class TopCategories
     BuildContext context,
     String category,
   ) {
-    // Navigator.pushNamed(
-    //   context,
-    //   CategoryDealsScreen.routeName,
-    //   arguments: category,
-    // );
+    Navigator.pushNamed(
+      context,
+      CategoryDealsScreen.routeName,
+      arguments: category,
+    );
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:ecom/common/widgets/bottom_bar.dart';
 import 'package:ecom/features/admin/screens/add_product_screen.dart';
 import 'package:ecom/features/auth/screens/auth_screen.dart';
+import 'package:ecom/features/home/screens/category_deals_screen.dart';
 import 'package:ecom/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,17 @@ Route<dynamic> generateRoute(
             (_) =>
                 const AddProductScreen(),
       );
+    case CategoryDealsScreen.routeName:
+      var category =
+          routeSettings.arguments
+              as String;
+      return MaterialPageRoute(
+        builder:
+            (_) => CategoryDealsScreen(
+              category: category,
+            ),
+      );
+
     default:
       return MaterialPageRoute(
         builder:
