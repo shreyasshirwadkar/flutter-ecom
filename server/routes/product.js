@@ -42,7 +42,7 @@ productRouter.post("/api/rate-product", auth, async (req, res) => {
     const ratingSchema = {
       userId: req.user,
       rating,
-    };
+    };  
 
     product.ratings.push(ratingSchema);
     product = await product.save();

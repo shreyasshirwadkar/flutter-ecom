@@ -1,4 +1,3 @@
-// TODO Implement this library.
 import 'dart:convert';
 
 class Rating {
