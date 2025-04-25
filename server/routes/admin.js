@@ -1,8 +1,8 @@
 const express = require("express");
 const adminRouter = express.Router();
-const admin = require("../middlewares/admin");
-const { Product } = require("../models/product");
-const Order = require("../models/order");
+const admin = require("../middlewares/admin.js");
+const { Product } = require("../models/product.js");
+const Order = require("../models/order.js");
 const { PromiseProvider } = require("mongoose");
 
 // Add product
