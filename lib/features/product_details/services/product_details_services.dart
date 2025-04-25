@@ -81,7 +81,7 @@ class ProductDetailsServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/api/rate-product',
+          '$uri/api/products/rate-product',
         ),
         headers: {
           'Content-Type':
