@@ -86,17 +86,17 @@ Route<dynamic> generateRoute(
               totalAmount: totalAmount,
             ),
       );
-    // case OrderDetailScreen.routeName:
-    //   var order =
-    //       routeSettings.arguments
-    //           as Order;
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder:
-    //         (_) => OrderDetailScreen(
-    //           order: order,
-    //         ),
-    //   );
+    case OrderDetailScreen.routeName:
+      var order =
+          routeSettings.arguments
+              as Order;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder:
+            (_) => OrderDetailScreen(
+              order: order,
+            ),
+      );
     default:
       return MaterialPageRoute(
         settings: routeSettings,
