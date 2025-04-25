@@ -15,7 +15,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api", authRouter);
-app.use("/api", adminRouter);
+app.use("/admin", adminRouter);
 app.use("/api", productRouter);
 app.use("/api", userRouter);
 
