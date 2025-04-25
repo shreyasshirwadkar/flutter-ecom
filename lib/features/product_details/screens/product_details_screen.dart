@@ -342,8 +342,7 @@ class _ProductDetailScreenState
                   ),
               child: CustomButton(
                 text: 'Add to Cart',
-                onTap: () => {},
-                // onTap: addToCart,
+                onTap: addToCart,
                 color:
                     const Color.fromARGB(
                       255,

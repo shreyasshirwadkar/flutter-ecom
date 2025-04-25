@@ -1,7 +1,7 @@
 import 'package:ecom/common/widgets/bottom_bar.dart';
+import 'package:ecom/constants/global_variables.dart';
 import 'package:ecom/features/admin/screens/admin_screen.dart';
 import 'package:ecom/features/auth/screens/auth_screen.dart';
-import 'package:ecom/constants/global_variables.dart';
 import 'package:ecom/features/auth/services/auth_service.dart';
 import 'package:ecom/providers/user_provider.dart';
 import 'package:ecom/router.dart';
@@ -24,7 +24,8 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key})
+    : super(key: key);
 
   @override
   State<MyApp> createState() =>
@@ -38,35 +39,32 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) {
-          authService.getUserData(
-            context: context,
-          );
-        });
+    authService.getUserData(context);
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Ecom',
+      title: 'Amazon Clone',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(
-          primary:
-              GlobalVariables
-                  .secondaryColor,
-        ),
         scaffoldBackgroundColor:
             GlobalVariables
                 .backgroundColor,
+        colorScheme:
+            const ColorScheme.light(
+              primary:
+                  GlobalVariables
+                      .secondaryColor,
+            ),
         appBarTheme: const AppBarTheme(
           elevation: 0,
           iconTheme: IconThemeData(
             color: Colors.black,
           ),
         ),
+        useMaterial3:
+            true, // can remove this line
       ),
       onGenerateRoute:
           (settings) =>

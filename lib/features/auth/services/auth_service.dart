@@ -4,15 +4,15 @@ import 'package:ecom/common/widgets/bottom_bar.dart';
 import 'package:ecom/constants/error_handling.dart';
 import 'package:ecom/constants/global_variables.dart';
 import 'package:ecom/constants/utils.dart';
-import 'package:ecom/features/home/screens/home_screen.dart';
-import 'package:ecom/models/User.dart';
+import 'package:ecom/models/user.dart';
 import 'package:ecom/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-import "package:http/http.dart" as http;
+import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
+  // sign up user
   void signUpUser({
     required BuildContext context,
     required String email,
@@ -23,31 +23,31 @@ class AuthService {
       User user = User(
         id: '',
         name: name,
-        email: email,
         password: password,
+        email: email,
         address: '',
         type: '',
         token: '',
+        cart: [],
       );
-      print("SENDING REQ");
+
       http.Response
       res = await http.post(
         Uri.parse('$uri/api/signup'),
         body: user.toJson(),
         headers: <String, String>{
-          'Content-type':
+          'Content-Type':
               'application/json; charset=UTF-8',
         },
       );
-      // print("RECEIVING REQ");
-      // print("RES: $res");
+
       httpErrorHandle(
         response: res,
         context: context,
         onSuccess: () {
           showSnackBar(
             context,
-            'Account created! Login with the same credentials',
+            'Account created! Login with the same credentials!',
           );
         },
       );
@@ -59,6 +59,7 @@ class AuthService {
     }
   }
 
+  // sign in user
   void signInUser({
     required BuildContext context,
     required String email,
@@ -73,7 +74,7 @@ class AuthService {
           'password': password,
         }),
         headers: <String, String>{
-          'Content-type':
+          'Content-Type':
               'application/json; charset=UTF-8',
         },
       );
@@ -87,7 +88,6 @@ class AuthService {
             context,
             listen: false,
           ).setUser(res.body);
-
           await prefs.setString(
             'x-auth-token',
             jsonDecode(
@@ -99,14 +99,6 @@ class AuthService {
             BottomBar.routeName,
             (route) => false,
           );
-          // Navigator.pushNamedAndRemoveUntil(
-          //   context,
-          //   HomeScreen.routeName,
-          // );
-          // showSnackBar(
-          //   context,
-          //   'Login Successful',
-          // );
         },
       );
     } catch (e) {
@@ -117,40 +109,44 @@ class AuthService {
     }
   }
 
-  void getUserData({
-    required BuildContext context,
-  }) async {
+  // get user data
+  void getUserData(
+    BuildContext context,
+  ) async {
     try {
       SharedPreferences prefs =
           await SharedPreferences.getInstance();
       String? token = prefs.getString(
         'x-auth-token',
       );
+
       if (token == null) {
         prefs.setString(
-          "x-auth-token",
-          "",
+          'x-auth-token',
+          '',
         );
       }
+
       var tokenRes = await http.post(
         Uri.parse('$uri/tokenIsValid'),
         headers: <String, String>{
-          'Content-type':
-              "application/json; charset=UTF-8",
+          'Content-Type':
+              'application/json; charset=UTF-8',
           'x-auth-token': token!,
         },
       );
+
       var response = jsonDecode(
         tokenRes.body,
       );
-      if (response) {
-        //get user data
+
+      if (response == true) {
         http.Response
         userRes = await http.get(
-          Uri.parse("$uri/"),
+          Uri.parse('$uri/'),
           headers: <String, String>{
-            'Content-type':
-                "application/json; charset=UTF-8",
+            'Content-Type':
+                'application/json; charset=UTF-8',
             'x-auth-token': token,
           },
         );

@@ -45,12 +45,12 @@ class _BottomBarState
 
   @override
   Widget build(BuildContext context) {
-    // final userCartLen =
-    //     context
-    //         .watch<UserProvider>()
-    //         .user
-    //         .cart
-    //         .length;
+    final userCartLen =
+        context
+            .watch<UserProvider>()
+            .user
+            .cart
+            .length;
 
     return Scaffold(
       body: pages[_page],
@@ -143,12 +143,10 @@ class _BottomBarState
                   end: -5,
                 ),
 
-                badgeContent:
-                    const Text('2'),
-                // badgeContent: Text(
-                //   userCartLen
-                //       .toString(),
-                // ),
+                badgeContent: Text(
+                  userCartLen
+                      .toString(),
+                ),
                 badgeStyle:
                     badges.BadgeStyle(
                       badgeColor:
