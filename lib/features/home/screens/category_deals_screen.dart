@@ -116,15 +116,15 @@ class _CategoryDealsScreenState
                         final product =
                             productList![index];
                         return GestureDetector(
-                          // onTap: () {
-                          //   Navigator.pushNamed(
-                          //     context,
-                          //     ProductDetailScreen
-                          //         .routeName,
-                          //     arguments:
-                          //         product,
-                          //   );
-                          // },
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ProductDetailScreen
+                                  .routeName,
+                              arguments:
+                                  product,
+                            );
+                          },
                           child: Column(
                             children: [
                               SizedBox(

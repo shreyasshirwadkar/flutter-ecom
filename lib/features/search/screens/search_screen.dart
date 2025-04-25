@@ -193,15 +193,15 @@ class _SearchScreenState
                         index,
                       ) {
                         return GestureDetector(
-                          // onTap: () {
-                          //   Navigator.pushNamed(
-                          //     context,
-                          //     ProductDetailScreen
-                          //         .routeName,
-                          //     arguments:
-                          //         products![index],
-                          //   );
-                          // },
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ProductDetailScreen
+                                  .routeName,
+                              arguments:
+                                  products![index],
+                            );
+                          },
                           child: SearchedProduct(
                             product:
                                 products![index],

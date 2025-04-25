@@ -4,11 +4,13 @@ class CustomButton
     extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
+  final Color? color;
 
   const CustomButton({
     super.key,
     required this.text,
     required this.onTap,
+    this.color = Colors.black,
   });
 
   @override
@@ -31,7 +33,7 @@ class CustomButton
           horizontal: 25,
         ),
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: color,
           borderRadius:
               BorderRadius.circular(8),
         ),

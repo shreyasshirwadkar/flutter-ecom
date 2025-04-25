@@ -64,17 +64,17 @@ Route<dynamic> generateRoute(
               searchQuery: searchQuery,
             ),
       );
-    // case ProductDetailScreen.routeName:
-    //   var product =
-    //       routeSettings.arguments
-    //           as Product;
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder:
-    //         (_) => ProductDetailScreen(
-    //           product: product,
-    //         ),
-    //   );
+    case ProductDetailScreen.routeName:
+      var product =
+          routeSettings.arguments
+              as Product;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder:
+            (_) => ProductDetailScreen(
+              product: product,
+            ),
+      );
     // case AddressScreen.routeName:
     //   var totalAmount =
     //       routeSettings.arguments
