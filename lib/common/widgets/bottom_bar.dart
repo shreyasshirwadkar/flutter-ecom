@@ -2,11 +2,11 @@ import 'package:badges/badges.dart'
     as badges;
 import 'package:ecom/features/account/screens/account_screen.dart';
 
-import '../../constants/global_variables.dart';
+import 'package:ecom/constants/global_variables.dart';
 // import '../../features/account/screens/account_screen.dart';
-// import '../../features/cart/screens/cart_screen.dart';
-import '../../features/home/screens/home_screen.dart';
-import '../../providers/user_provider.dart';
+import 'package:ecom/features/cart/screens/cart_screen.dart';
+import 'package:ecom/features/home/screens/home_screen.dart';
+import 'package:ecom/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,11 +30,7 @@ class _BottomBarState
   List<Widget> pages = [
     const HomeScreen(),
     const AccountScreen(),
-
-    const Center(
-      child: Text("Cart Page"),
-    ),
-    // const CartScreen(),
+    const CartScreen(),
   ];
 
   void updatePage(int page) {
