@@ -1,7 +1,7 @@
 const express = require("express");
 const productRouter = express.Router();
-const auth = require("../middlewares/auth.js");
-const { Product } = require("../models/product.js");
+const auth = require("../middlewares/auth");
+const { Product } = require("../models/product");
 
 productRouter.get("/api/products/", auth, async (req, res) => {
   try {
@@ -42,7 +42,7 @@ productRouter.post("/api/rate-product", auth, async (req, res) => {
     const ratingSchema = {
       userId: req.user,
       rating,
-    };  
+    };
 
     product.ratings.push(ratingSchema);
     product = await product.save();
