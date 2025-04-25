@@ -75,17 +75,17 @@ Route<dynamic> generateRoute(
               product: product,
             ),
       );
-    // case AddressScreen.routeName:
-    //   var totalAmount =
-    //       routeSettings.arguments
-    //           as String;
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder:
-    //         (_) => AddressScreen(
-    //           totalAmount: totalAmount,
-    //         ),
-    //   );
+    case AddressScreen.routeName:
+      var totalAmount =
+          routeSettings.arguments
+              as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder:
+            (_) => AddressScreen(
+              totalAmount: totalAmount,
+            ),
+      );
     // case OrderDetailScreen.routeName:
     //   var order =
     //       routeSettings.arguments

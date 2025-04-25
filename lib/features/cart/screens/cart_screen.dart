@@ -31,13 +31,13 @@ class _CartScreenState
     );
   }
 
-  // void navigateToAddress(int sum) {
-  //   Navigator.pushNamed(
-  //     context,
-  //     AddressScreen.routeName,
-  //     arguments: sum.toString(),
-  //   );
-  // }
+  void navigateToAddress(int sum) {
+    Navigator.pushNamed(
+      context,
+      AddressScreen.routeName,
+      arguments: sum.toString(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -187,11 +187,11 @@ class _CartScreenState
               child: CustomButton(
                 text:
                     'Proceed to Buy (${user.cart.length} items)',
-                onTap: () => {},
-                // () =>
-                //     navigateToAddress(
-                //       sum,
-                //     ),
+                onTap:
+                    () =>
+                        navigateToAddress(
+                          sum,
+                        ),
                 color:
                     Colors.orange[500],
               ),
