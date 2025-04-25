@@ -52,6 +52,10 @@ class ProductDetailsServices {
           userProvider.setUserFromModel(
             user,
           );
+          showSnackBar(
+            context,
+            'Item added to cart!',
+          );
         },
       );
     } catch (e) {

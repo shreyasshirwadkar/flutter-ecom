@@ -1,10 +1,10 @@
 import 'package:ecom/common/widgets/loader.dart';
-import 'package:ecom/constants/global_variables.dart';
 import 'package:ecom/features/account/widgets/single_product.dart';
 import 'package:ecom/features/admin/screens/add_product_screen.dart';
 import 'package:ecom/features/admin/services/admin_services.dart';
 import 'package:ecom/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:focus_detector/focus_detector.dart';
 
 class PostsScreen
     extends StatefulWidget {
@@ -57,76 +57,84 @@ class _PostsScreenState
 
   @override
   Widget build(BuildContext context) {
-    return products == null
-        ? const Loader()
-        : Scaffold(
-          body: GridView.builder(
-            itemCount: products!.length,
-            gridDelegate:
-                const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-            itemBuilder: (
-              context,
-              index,
-            ) {
-              final productData =
-                  products![index];
-              return Column(
-                children: [
-                  SizedBox(
-                    height: 140,
-                    child: SingleProduct(
-                      image:
-                          productData
-                              .images[0],
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment
-                            .spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          productData
-                              .name,
-                          overflow:
-                              TextOverflow
-                                  .ellipsis,
-                          maxLines: 2,
-                        ),
+    return FocusDetector(
+      onFocusGained: () {
+        fetchAllProducts();
+      },
+      child:
+          products == null
+              ? const Loader()
+              : Scaffold(
+                body: GridView.builder(
+                  itemCount:
+                      products!.length,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount:
+                            2,
                       ),
-                      IconButton(
-                        onPressed:
-                            () => deleteProduct(
-                              productData,
-                              index,
+                  itemBuilder: (
+                    context,
+                    index,
+                  ) {
+                    final productData =
+                        products![index];
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 140,
+                          child: SingleProduct(
+                            image:
+                                productData
+                                    .images[0],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment:
+                              MainAxisAlignment
+                                  .spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                productData
+                                    .name,
+                                overflow:
+                                    TextOverflow.ellipsis,
+                                maxLines:
+                                    2,
+                              ),
                             ),
-                        icon: const Icon(
-                          Icons
-                              .delete_outline,
+                            IconButton(
+                              onPressed:
+                                  () => deleteProduct(
+                                    productData,
+                                    index,
+                                  ),
+                              icon: const Icon(
+                                Icons
+                                    .delete_outline,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
-          ),
-          floatingActionButton:
-              FloatingActionButton(
-                child: const Icon(
-                  Icons.add,
+                      ],
+                    );
+                  },
                 ),
-                onPressed:
-                    navigateToAddProduct,
-                tooltip:
-                    'Add a Product',
+                floatingActionButton:
+                    FloatingActionButton(
+                      child: const Icon(
+                        Icons.add,
+                      ),
+                      onPressed:
+                          navigateToAddProduct,
+                      tooltip:
+                          'Add a Product',
+                    ),
+                floatingActionButtonLocation:
+                    FloatingActionButtonLocation
+                        .centerFloat,
               ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation
-                  .centerFloat,
-        );
+    );
   }
 }

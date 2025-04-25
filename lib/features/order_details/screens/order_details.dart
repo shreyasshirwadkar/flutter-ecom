@@ -48,16 +48,19 @@ class _OrderDetailScreenState
 
   // !!! ONLY FOR ADMIN!!!
   void changeOrderStatus(int status) {
-    adminServices.changeOrderStatus(
-      context: context,
-      status: status + 1,
-      order: widget.order,
-      onSuccess: () {
-        setState(() {
-          currentStep += 1;
-        });
-      },
-    );
+    if (status < 3) {
+      // Only allow status change if not at final step
+      adminServices.changeOrderStatus(
+        context: context,
+        status: status + 1,
+        order: widget.order,
+        onSuccess: () {
+          setState(() {
+            currentStep += 1;
+          });
+        },
+      );
+    }
   }
 
   @override
