@@ -30,14 +30,9 @@ class AccountButton
         ),
         child: OutlinedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor:
-                const Color.fromARGB(
-                  15,
-                  0,
-                  0,
-                  0,
-                ),
-
+            backgroundColor: Colors
+                .black12
+                .withOpacity(0.03),
             shape: RoundedRectangleBorder(
               borderRadius:
                   BorderRadius.circular(

@@ -1,4 +1,4 @@
-// import 'package:ecom/features/account/services/account_services.dart';
+import 'package:ecom/features/account/services/account_services.dart';
 import 'package:ecom/features/account/widgets/account_button.dart';
 import 'package:flutter/material.dart';
 
@@ -28,12 +28,14 @@ class TopButtons
           children: [
             AccountButton(
               text: 'Log Out',
-              onTap: () => {},
-              // AccountServices()
-              //     .logOut(
-              //       context,
-              //     ),
+              onTap:
+                  () =>
+                      AccountServices()
+                          .logOut(
+                            context,
+                          ),
             ),
+
             AccountButton(
               text: 'Your Wish List',
               onTap: () {},
