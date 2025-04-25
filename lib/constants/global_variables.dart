@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 String uri =
-    'https://flutter-ecom-u6y2.onrender.comAQ         ';
+    'https://flutter-ecom-u6y2.onrender.com';
 
 class GlobalVariables {
   // COLORS
