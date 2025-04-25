@@ -3,7 +3,7 @@ const productRouter = express.Router();
 const auth = require("../middlewares/auth");
 const { Product } = require("../models/product");
 
-productRouter.get("/api/products/", auth, async (req, res) => {
+productRouter.get("/", auth, async (req, res) => {
   try {
     const products = await Product.find({ category: req.query.category });
     res.json(products);
@@ -14,7 +14,7 @@ productRouter.get("/api/products/", auth, async (req, res) => {
 
 // create a get request to search products and get them
 // /api/products/search/i
-productRouter.get("/api/products/search/:name", auth, async (req, res) => {
+productRouter.get("/search/:name", auth, async (req, res) => {
   try {
     const products = await Product.find({
       name: { $regex: req.params.name, $options: "i" },
@@ -27,7 +27,7 @@ productRouter.get("/api/products/search/:name", auth, async (req, res) => {
 });
 
 // create a post request route to rate the product.
-productRouter.post("/api/rate-product", auth, async (req, res) => {
+productRouter.post("/rate-product", auth, async (req, res) => {
   try {
     const { id, rating } = req.body;
     let product = await Product.findById(id);
@@ -52,7 +52,7 @@ productRouter.post("/api/rate-product", auth, async (req, res) => {
   }
 });
 
-productRouter.get("/api/deal-of-day", auth, async (req, res) => {
+productRouter.get("/deal-of-day", auth, async (req, res) => {
   try {
     let products = await Product.find({});
 

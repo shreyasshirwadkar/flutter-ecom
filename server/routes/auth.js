@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const auth = require("../middlewares/auth");
 const User = require("../models/user");
 
-authRouter.post("/api/signup", async (req, res) => {
+authRouter.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -32,7 +32,7 @@ authRouter.post("/api/signup", async (req, res) => {
   }
 });
 
-authRouter.post("/api/signin", async (req, res) => {
+authRouter.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });

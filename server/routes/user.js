@@ -5,7 +5,7 @@ const Order = require("../models/order");
 const { Product } = require("../models/product");
 const User = require("../models/user");
 
-userRouter.post("/api/add-to-cart", auth, async (req, res) => {
+userRouter.post("/add-to-cart", auth, async (req, res) => {
   try {
     const { id } = req.body;
     const product = await Product.findById(id);
@@ -37,7 +37,7 @@ userRouter.post("/api/add-to-cart", auth, async (req, res) => {
   }
 });
 
-userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
+userRouter.delete("/remove-from-cart/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findById(id);
@@ -60,7 +60,7 @@ userRouter.delete("/api/remove-from-cart/:id", auth, async (req, res) => {
 });
 
 // save user address
-userRouter.post("/api/save-user-address", auth, async (req, res) => {
+userRouter.post("/save-user-address", auth, async (req, res) => {
   try {
     const { address } = req.body;
     let user = await User.findById(req.user);
@@ -73,7 +73,7 @@ userRouter.post("/api/save-user-address", auth, async (req, res) => {
 });
 
 // order product
-userRouter.post("/api/order", auth, async (req, res) => {
+userRouter.post("/order", auth, async (req, res) => {
   try {
     const { cart, totalPrice, address } = req.body;
     let products = [];
@@ -109,7 +109,7 @@ userRouter.post("/api/order", auth, async (req, res) => {
   }
 });
 
-userRouter.get("/api/orders/me", auth, async (req, res) => {
+userRouter.get("/orders/me", auth, async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.user });
     res.json(orders);
