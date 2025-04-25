@@ -25,7 +25,7 @@ class CartServices {
       http.Response
       res = await http.delete(
         Uri.parse(
-          '$uri/api/remove-from-cart/${product.id}',
+          '$uri/api/user/remove-from-cart/${product.id}',
         ),
         headers: {
           'Content-Type':

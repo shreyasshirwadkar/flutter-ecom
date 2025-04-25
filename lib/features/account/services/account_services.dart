@@ -20,10 +20,10 @@ class AccountServices {
           listen: false,
         );
     List<Order> orderList = [];
-    try {
+  try {
       http.Response
       res = await http.get(
-        Uri.parse('$uri/api/orders/me'),
+        Uri.parse('$uri/api/user/orders/me'),
         headers: {
           'Content-Type':
               'application/json; charset=UTF-8',

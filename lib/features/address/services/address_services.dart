@@ -24,7 +24,7 @@ class AddressServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/api/save-user-address',
+          '$uri/api/user/save-user-address',
         ),
         headers: {
           'Content-Type':
@@ -77,7 +77,9 @@ class AddressServices {
     try {
       http.Response
       res = await http.post(
-        Uri.parse('$uri/api/order'),
+        Uri.parse(
+          '$uri/api/user/order',
+        ),
         headers: {
           'Content-Type':
               'application/json; charset=UTF-8',

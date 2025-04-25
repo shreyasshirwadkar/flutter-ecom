@@ -25,7 +25,7 @@ class ProductDetailsServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/api/add-to-cart',
+          '$uri/api/user/add-to-cart',
         ),
         headers: {
           'Content-Type':
