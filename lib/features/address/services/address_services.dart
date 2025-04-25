@@ -130,7 +130,7 @@ class AddressServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/admin/delete-product',
+          '$uri/api/admin/delete-product',
         ),
         headers: {
           'Content-Type':

@@ -63,7 +63,7 @@ class AdminServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/admin/add-product',
+          '$uri/api/admin/add-product',
         ),
         headers: {
           'Content-Type':
@@ -108,7 +108,7 @@ class AdminServices {
       http.Response
       res = await http.get(
         Uri.parse(
-          '$uri/admin/get-products',
+          '$uri/api/admin/get-products',
         ),
         headers: {
           'Content-Type':
@@ -166,7 +166,7 @@ class AdminServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/admin/delete-product',
+          '$uri/api/admin/delete-product',
         ),
         headers: {
           'Content-Type':
@@ -207,7 +207,7 @@ class AdminServices {
       http.Response
       res = await http.get(
         Uri.parse(
-          '$uri/admin/get-orders',
+          '$uri/api/admin/get-orders',
         ),
         headers: {
           'Content-Type':
@@ -266,7 +266,7 @@ class AdminServices {
       http.Response
       res = await http.post(
         Uri.parse(
-          '$uri/admin/change-order-status',
+          '$uri/api/admin/change-order-status',
         ),
         headers: {
           'Content-Type':
@@ -308,7 +308,7 @@ class AdminServices {
       http.Response
       res = await http.get(
         Uri.parse(
-          '$uri/admin/analytics',
+          '$uri/api/admin/analytics',
         ),
         headers: {
           'Content-Type':

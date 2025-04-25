@@ -90,7 +90,7 @@ class HomeServices {
       http.Response
       res = await http.get(
         Uri.parse(
-          '$uri/api/deal-of-day',
+          '$uri/api/products/deal-of-day',
         ),
         headers: {
           'Content-Type':

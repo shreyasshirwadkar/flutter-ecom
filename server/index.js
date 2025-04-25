@@ -14,10 +14,10 @@ const userRouter = require("./routes/user");
 app.use(express.json());
 
 // Routes
-app.use("/api", authRouter);
-app.use("/admin", adminRouter);
-app.use("/api", productRouter);
-app.use("/api", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/admin", adminRouter);
+app.use("/api/products", productRouter);
+app.use("/api/user", userRouter);
 
 // Health check endpoint
 app.get("/health", (req, res) => {
