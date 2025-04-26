@@ -2,6 +2,10 @@
 
 A full-stack e-commerce application built with Flutter for the frontend and Node.js/Express for the backend.
 
+# Admin login : 
+email : leo@gmail.com
+password: 1234567
+
 ## Project Structure
 
 ```
