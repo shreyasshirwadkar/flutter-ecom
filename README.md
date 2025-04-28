@@ -6,6 +6,9 @@ A full-stack e-commerce application built with Flutter for the frontend and Node
 email : leo@gmail.com
 password: 1234567
 
+![image](https://github.com/user-attachments/assets/989ef732-c660-4afc-86ba-60118915990c)
+
+
 ## Project Structure
 
 ```
